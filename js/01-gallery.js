@@ -2,34 +2,55 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 "use strict";
 
+// HTML REFRENCES
 const ref = {
     galleryList: document.querySelector('.gallery'),
 };
 
-const galleryMarkup = galleryItems.map((item) =>
+// MARKUP FUNCTION
+function galleryMarkup(array) {
+    return array.map((item) =>
     `<div class="gallery__item"><a class="gallery__link" href="${item.original}"><img class="gallery__image" src="${item.preview}" data-source="item.preview" alt="${item.description}/></a></div>"`).join('');
+}
 
-ref.galleryList.insertAdjacentHTML("afterbegin", galleryMarkup);
+ref.galleryList.insertAdjacentHTML("afterbegin", galleryMarkup(galleryItems));
 
+// HTML REFRENCES
 const galleryImage = document.querySelector(".gallery__link");
-console.log(galleryImage);
 const largeImage = galleryImage.getAttribute("href");
-console.log(largeImage);
+const originalImage = document.querySelector('.gallery__image')
 
+
+// LIGHTBOX FUNCTIONS
 ref.galleryList.addEventListener("click", (handleClick));
 
+const imageSelect = basicLightbox.create(`
+    <img width="800" height="600"
+    src="${galleryImage}">
+`)
+
+const lightboxVisible = imageSelect.visible();
+
+// SHOW LIGHTBOX
 function handleClick(e) {
     e.preventDefault();
-    if (e.target === largeImage) {
-        console.log("Responding");
+    if (e.target === originalImage) {
+        console.log(handleClick);
+        imageSelect.show();
     }
 }
 
-import * as basicLightbox from 'basiclightbox'
+// ESC CLOSE LIGTHBOX
+ref.galleryList.addEventListener("keydown", (handleEscPress));
 
-const instance = basicLightbox.create(`
-    <img src="assets/images/image.png" width="800" height="600">
-`)
+function handleEscPress(e) {
+    if (e.key === 'Escape') {
+        imageSelect.close();
+    }
+}
 
-instance.show()
+
+
+
+
 
