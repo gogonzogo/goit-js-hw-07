@@ -1,13 +1,27 @@
-// import simpleLightbox from 'simplelightbox';
+"use strict";
+
+// import SimpleLightbox from "simplelightbox";
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-
-"use strict";
 
 // HTML REFRENCES
 const ref = {
     galleryList: document.querySelector('.gallery'),
 };
+
+// let throttleScroll = _.throttle(handleScroll, 250);
+
+// window.addEventListener('scroll', handleScroll);
+
+const result = _.add(2, 3);
+console.log(result); // 5
+
+window.addEventListener(
+    "scroll",
+    _.throttle(() => {
+        console.log("Scroll handler call every 300ms");
+    }, 1000)
+);
 
 // MARKUP FUNCTION
 function galleryMarkup(array) {
@@ -29,20 +43,11 @@ function handleClick(e) {
         return;
     };
 
-    let showLightbox = new simpleLightbox('.gallery a');
-    
+    let showLightbox = new SimpleLightbox('.gallery a');
+
         showLightbox.on('show.simplelightbox', function () {
             
         });
-    
-
-    // ESC CLOSE LIGTHBOX
-    ref.galleryList.addEventListener("keydown", (handleEscPress));
-
-    function handleEscPress(e) {
-        if (e.key === 'Escape') {
-            
-        }
-    };
-
+        
 }
+
