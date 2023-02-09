@@ -1,6 +1,7 @@
+
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-"use strict";
+
 
 // HTML REFRENCES
 const ref = {
@@ -20,6 +21,11 @@ function galleryMarkup(array) {
 
 ref.galleryList.insertAdjacentHTML("afterbegin", galleryMarkup(galleryItems));
 
+const image = document.querySelector('.gallery__image');
+console.log(image);
+const dataSource = image.getAttribute("data-source");
+console.log(dataSource);
+
 // EVENT LISTENER AND FUNCTION
 ref.galleryList.addEventListener("click", handleClick);
 
@@ -32,8 +38,7 @@ function handleClick(e) {
     };
 
     const selectedImage = basicLightbox.create(`
-    <img width= 650" height="450"
-    src="${clickTarget.dataset.source}">
+    <img src="${clickTarget.dataset.source}">
 `);
     selectedImage.show();
 
@@ -45,7 +50,6 @@ function handleClick(e) {
             selectedImage.close();
         }
     };
-
 }
 
 

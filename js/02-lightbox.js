@@ -1,4 +1,3 @@
-"use strict";
 
 // import SimpleLightbox from "simplelightbox";
 import { galleryItems } from './gallery-items.js';
@@ -28,8 +27,8 @@ function handleClick(e) {
         return;
     };
 
-    let showLightbox = new SimpleLightbox('.gallery a');
+    let showLightbox = new SimpleLightbox('.gallery a', {captionsData:"alt", captionDelay: 250, captionPosition: "bottom",});
 
         showLightbox.on('show.simplelightbox', function () {});
-}
+};
 
