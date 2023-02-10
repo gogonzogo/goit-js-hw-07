@@ -1,7 +1,5 @@
-
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-
 
 // HTML REFRENCES
 const ref = {
@@ -39,7 +37,8 @@ function handleClick(e) {
 
     const selectedImage = basicLightbox.create(`
     <img src="${clickTarget.dataset.source}">
-`);
+    `);
+
     selectedImage.show();
 
     // ESC CLOSE LIGTHBOX
