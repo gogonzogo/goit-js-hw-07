@@ -1,12 +1,10 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-// HTML REFRENCES
 const ref = {
     galleryList: document.querySelector('.gallery'),
 };
 
-// MARKUP FUNCTION
 function galleryMarkup(array) {
     return array.map((item) =>
         `<div class="gallery__item">
@@ -20,28 +18,20 @@ function galleryMarkup(array) {
 ref.galleryList.insertAdjacentHTML("afterbegin", galleryMarkup(galleryItems));
 
 const image = document.querySelector('.gallery__image');
-console.log(image);
 const dataSource = image.getAttribute("data-source");
-console.log(dataSource);
 
-// EVENT LISTENER AND FUNCTION
 ref.galleryList.addEventListener("click", handleClick);
 
 function handleClick(e) {
     e.preventDefault();
-    const clickTarget = e.target;
-    
+    const clickTarget = e.target;    
     if (clickTarget.nodeName !== "IMG") {
         return;
     };
-
     const selectedImage = basicLightbox.create(`
     <img src="${clickTarget.dataset.source}">
     `);
-
     selectedImage.show();
-
-    // ESC CLOSE LIGTHBOX
     ref.galleryList.addEventListener("keydown", (handleEscPress));
 
     function handleEscPress(e) {
@@ -50,8 +40,3 @@ function handleClick(e) {
         }
     };
 }
-
-
-
-
-
