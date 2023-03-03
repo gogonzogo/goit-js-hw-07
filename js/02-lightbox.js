@@ -20,16 +20,16 @@ function galleryMarkup(array) {
 
 ref.galleryList.insertAdjacentHTML("afterbegin", galleryMarkup(galleryItems));
 
-// EVENT LISTENER AND FUNCTION
-ref.galleryList.addEventListener("click", handleClick);
+// // EVENT LISTENER AND FUNCTION
+// ref.galleryList.addEventListener("click", handleClick);
 
-function handleClick(e) {
-    e.preventDefault();
-    const clickTarget = e.target;
-    if (clickTarget.nodeName !== "IMG") {
-        return;
-    };
+// function handleClick(e) {
+//     e.preventDefault();
+//     const clickTarget = e.target;
+//     if (clickTarget.nodeName !== "IMG") {
+//         return;
+//     };
     let showLightbox = new SimpleLightbox('.gallery a', {captionsData:"alt", captionDelay: 250, captionPosition: "bottom"});
-        showLightbox.on();
-};
+        
+
 
